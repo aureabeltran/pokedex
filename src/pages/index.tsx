@@ -12,6 +12,9 @@ const PageStyles = styled.div`
   width: 75.49%;
   padding-top: 60px;
   padding-bottom: 60px;
+  @media (max-width: 400px) {
+    width: 90.49%;
+  }
 `;
 
 const IndexPage = () => {
@@ -46,8 +49,8 @@ const IndexPage = () => {
   }
 
   return (
-    <PageStyles className="sm:mx-auto px-4">
-      <div className="grid grid-cols-4 gap-4 ">
+    <PageStyles className=" px-4" style={{margin: 'auto'}}>
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4" >
         
         {pokemons.length > 1 && pokemons.map((item,index) =>
           <PokemonCard data={item} key={index}/>

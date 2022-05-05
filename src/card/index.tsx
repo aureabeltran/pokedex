@@ -37,12 +37,12 @@ const PokemonCard = (data: {data:{id: number,order:{}, name:string, types: [], s
   return (
     // <Link to={`/app/${data.data.id}`}  state={data.data}>
       <CardDetail className="bg-white">
-          <img className="object-contain h-50 w-100 bg-slate-100" src={data.data.sprites.other["official-artwork"].front_default} />
-          <div className="pb-4 pt-1 px-4">
-            <PokemonNumber>N.°{data.data.order < 100 ? `0${data.data.order}`: data.data.order}</PokemonNumber>
-            <PokemonName>{data.data.name}</PokemonName>
-            <TypePokemonTag data={data.data.types}/>
-          </div>
+        <img className="object-contain h-50 w-100 bg-slate-100" src={data.data.sprites.other["official-artwork"].front_default} />
+        <div className="pb-4 pt-1 px-4">
+          <PokemonNumber>N.°{data.data.order < 100 ? `0${data.data.order}`: data.data.order}</PokemonNumber>
+          <PokemonName>{data.data.name}</PokemonName>
+          <TypePokemonTag data={data.data.types}/>
+        </div>
       </CardDetail>
     // </Link>
   )

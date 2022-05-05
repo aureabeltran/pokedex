@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
 
@@ -9,11 +9,17 @@ const TypeName =  styled.div`
 `;
 
 const TypePokemonTag = (data) => {
-
+    const [isLoading, setLoading] = useState(true)
+    useEffect( () => {
+        if(data.data){
+            setLoading(false)
+        }
+      })
+    
     const definedType = () =>{
-        
         for (let index = 0; index < data.data.length; index++) {
-            let type = data.data[index].type.name
+
+            let type = data.data[index].type ? data.data[index].type.name : data.data[index].name
             switch (type) {
                 case 'normal':
                     data.data[index].color = '#a4acaf'
@@ -79,10 +85,13 @@ const TypePokemonTag = (data) => {
                 <div style={{background: item.color,
                 borderRadius: '3px',
                 lineHeight: '18px',
+                height: 'auto',
+                maxHeight: "32px",
                 width: '40%',
+                maxWidth: "140px",
                 margin: '0 1.5625% 0 0',
                 fontSize: '11px'}} key={index} className="flex-initial">
-                    <TypeName>{item.type.name}</TypeName>
+                    <TypeName>{item.type ? item.type.name : item.name}</TypeName>
                 </div>
             )
         )
@@ -90,7 +99,7 @@ const TypePokemonTag = (data) => {
     
   return (
       <div className="flex">
-           { definedType()} 
+           { !isLoading ? definedType() : null} 
       </div> 
   )
 }
